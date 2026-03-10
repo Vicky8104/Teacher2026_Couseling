@@ -3,23 +3,24 @@ const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
   post: String,
   subject: String,
-  rollNo: String,
   meritNo: String,
+  rollno: String, 
   name: String,
   fatherName: String,
   gender: String,
-  dob: Date,
+  dob: String,
   maritalStatus: String,
   homeDistrict: String,
   category: String,
   selectionCategory: String,
   specialCategory: String,
-  mobileNo: String,
+  otherCategory: String,
+  mobile: String,
   email: String,
-  otherOption: String
+  otp: String,
+  otpExpiry: Date,
+  schoolChoices: [String],
 });
 
-userSchema.index({ post: 1, subject: 1, rollNo: 1 }, { unique: true });
-
-module.exports = mongoose.model("User", userSchema);
-
+// 👇 Explicit collection name
+module.exports = mongoose.model("User", userSchema, "users");
